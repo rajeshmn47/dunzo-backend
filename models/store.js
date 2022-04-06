@@ -9,11 +9,16 @@ var storeSchema =  new Schema({
     maincategory:String,
     description:String,
     location:String,
-    category:Array,
+    category:[{
+      name: {
+        type: String,
+        required: true,
+      },
+    }],
     coordinates:{
       type:[Number],
       index:"2dsphere"
   },
 })
 
-module.exports = mongoose.model('storeTable',storeSchema)
+module.exports = mongoose.model('Store',storeSchema)

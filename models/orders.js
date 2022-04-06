@@ -4,7 +4,7 @@ const orderSchema = new mongoose.Schema({
 storeInfo:{
     store:{
         type: mongoose.Schema.ObjectId,
-        ref: "Product",
+        ref: "Store",
         required: true,
       },
     name:{

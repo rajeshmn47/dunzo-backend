@@ -4,12 +4,10 @@ const Schema = mongoose.Schema;
 
 const customerSchema = new Schema({
     name:{
-        type:String,
-        required:true
+        type:String,     
     },
     email:{
         type:String,
-        required:true
     },
     phoneNumber:{
         type:String,
