@@ -14,10 +14,6 @@ var storeSchema =  new Schema({
     description:String,
     location:String,
     category:Array,
-    categories:  [ {name: {
-      type: String,
-      required: true,
-    }}]
 })
 
 module.exports = mongoose.model('storeTable',storeSchema)

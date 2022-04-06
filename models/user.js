@@ -15,6 +15,10 @@ const customerSchema = new Schema({
         type:String,
         required:true
     },
+    coordinates:{
+        type:[Number],
+        index:"2dsphere"
+    },
     active:{
         type:Boolean,
         default:false
