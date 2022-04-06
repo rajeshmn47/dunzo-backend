@@ -10,6 +10,10 @@ var storeSchema =  new Schema({
     description:String,
     location:String,
     category:Array,
+    coordinates:{
+      type:[Number],
+      index:"2dsphere"
+  },
 })
 
 module.exports = mongoose.model('storeTable',storeSchema)
