@@ -10,5 +10,6 @@ var productSchema =  new Schema({
     desc:String,
     price:Number,
     quantity:Number,
+    weight:Number,
 })
 module.exports = mongoose.model('productTable',productSchema)

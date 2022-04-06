@@ -3,11 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 var storeSchema =  new Schema({
-    user: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-        required: true,
-      },
+    name:String,
     title:String,
     img_url:String,
     maincategory:String,

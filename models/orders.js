@@ -57,6 +57,10 @@ storeInfo:{
         type: Number,
         required: true,
       },
+      weight:{
+          type:Number,
+          required:true,
+      },
       image: {
         type: String,
         required: true,
