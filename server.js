@@ -18,7 +18,7 @@ app.use('/store/',store)
 app.use('/payment/',payment)
 mongoose.Promise = global.Promise
 mongoose.connect(
-    'mongodb://127.0.0.1:27017/dunzo',
+    ATLAS_URI,
   { useNewUrlParser: true, useUnifiedTopology: true },
   function (error) {
     if (error) {
