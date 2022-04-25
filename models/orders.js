@@ -7,7 +7,7 @@ storeInfo:{
         ref: "Store",
         required: true,
       },
-    name:{
+    title:{
         type: String,
         required: true,
       },
@@ -72,30 +72,6 @@ storeInfo:{
     type: mongoose.Schema.ObjectId,
     ref: "User",
     required: true,
-  },
-  paymentInfo: {
-    id: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: String,
-      required: true,
-    },
-  },
-  paidAt: {
-    type: Date,
-    required: true,
-  },
-  itemsPrice: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  taxPrice: {
-    type: Number,
-    required: true,
-    default: 0,
   },
   totalPrice: {
     type: Number,

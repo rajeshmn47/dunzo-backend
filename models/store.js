@@ -2,16 +2,30 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-var storeSchema =  new Schema({
-    title:String,
-    img_url:String,
-    maincategory:String,
-    description:String,
-    location:String,
+const storeSchema = new mongoose.Schema({
+    title:{
+      type: String,
+      required: true,
+    },
+    img_url:{
+      type: String,
+      required: true,
+    },
+    maincategory:{
+      type: String,
+      required: true,
+    },
+    description:{
+      type: String,
+      required: true,
+    },
+    location:{
+      type: String,
+      required: true,
+    },
     category:[{
       name: {
         type: String,
-        required: true,
       },
     }],
     coordinates:{
@@ -20,4 +34,5 @@ var storeSchema =  new Schema({
   },
 })
 
-module.exports = mongoose.model('Store',storeSchema)
+module.exports = mongoose.model('Store',storeSchema);
+

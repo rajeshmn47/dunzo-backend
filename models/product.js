@@ -2,8 +2,7 @@
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
-
-var productSchema =  new Schema({
+const productSchema = new mongoose.Schema({
     name:String,
     image:String,
     subcat:String,
@@ -12,4 +11,4 @@ var productSchema =  new Schema({
     quantity:Number,
     weight:Number,
 })
-module.exports = mongoose.model('productTable',productSchema)
+module.exports = mongoose.model('Product',productSchema)
