@@ -14,7 +14,7 @@ const ATLAS_URI ='mongodb+srv://rajeshmn47:uni1ver%40se@cluster0.bpxam.mongodb.n
 const cors=require('cors')
 const url = 'http://localhost:3000'
 const deployedurl='https://dunzoclonebyrajesh.netlify.app'
-app.use(cors({ origin: url, credentials: true }))
+app.use(cors({ origin:deployedurl, credentials: true }))
 app.use('/store/',store)
 app.use('/payment/',payment)
 mongoose.Promise = global.Promise
@@ -28,8 +28,8 @@ mongoose.connect(
   }
 )
 app.get("/",async(req,res)=>{
-    var a=Store({title:'nandus',img_url:'https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-168,h-168,cm-pad_resize_store_thumbnail/stores/39db1310-786d-4f1f-8959-a885d790ba52-1630661520568-store_image.jpg',
-    maincategory:'meat-and-fish-stores',description:'it is a good product',location:'Rajajinagar',})
+    var a=Store({title:'thebetel leef co',img_url:'https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-168,h-168,cm-pad_resize_store_thumbnail/stores/39db1310-786d-4f1f-8959-a885d790ba52-1630661520568-store_image.jpg',
+    maincategory:'paan',description:'it is a good product',location:'Sheshadripuram',})
     await a.save()
     console.log(a)
     res.send("API running")
@@ -38,18 +38,18 @@ app.get("/",async(req,res)=>{
 app.get("/pushcategories",async(req,res)=>{
     var a=await Store.find()
     a.forEach(async(b) => {
-b.category.push({name:'PROVISIONS'})
+b.category.push({name:'PAAN'})
 await b.save()
     })
     res.send("API running")
 })
 app.get('/createproduct',async(req,res)=>{
-  const product=Product({  name:'Sona Masoori Rice',
-    image:'https://ik.imagekit.io/dunzo/tr:w-100,h-100,cm-pad_resize/eGZucmFCbUVRVGNTQVVBKzA5YXlJZz09-product_image.jpg',   
-    subcat:'PROVISIONS',
-    desc:'It is a good vegetable for health',
-    price:115,
-    quantity:1,
+  const product=Product({  name:'Gold Flakes',
+    image:'https://ik.imagekit.io/dunzo/home/icons/home/dunzodaily/Paan_SKU_4x.png',   
+    subcat:'PAAN',
+    desc:'It is bad for health',
+    price:330,
+    quantity:20,
     weight:1,})
   await product.save()
   console.log(product)
