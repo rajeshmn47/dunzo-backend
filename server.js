@@ -58,4 +58,7 @@ app.get('/findout',async(req,res)=>{
     console.log(await Store.find())
 })
 
-app.listen(9000,()=>{console.log('App is running on port 9000')})
+const PORT = process.env.PORT || 9000
+app.listen(PORT, () => {
+      console.warn(`App listening on http://localhost:${PORT}`)
+    })
