@@ -13,6 +13,7 @@ dotenv.config();
 const ATLAS_URI ='mongodb+srv://rajeshmn47:uni1ver%40se@cluster0.bpxam.mongodb.net/dunzo?retryWrites=true&w=majority'
 const cors=require('cors')
 const url = 'http://localhost:3000'
+const deployedurl='https://dunzoclonebyrajesh.netlify.app'
 app.use(cors({ origin: url, credentials: true }))
 app.use('/store/',store)
 app.use('/payment/',payment)
