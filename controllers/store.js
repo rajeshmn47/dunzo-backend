@@ -78,4 +78,14 @@ stars.filter((s)=>(s.category.some((f)=>cat.includes(f))))
       'stars':stars
     })
   })
+
+  router.get("/getstores/:q",async function(req, res,next){
+    const queryString=req.params.q
+    var stores=await Store.find()
+    stores.filter((s)=>(s.category.some((f)=>f===queryString)))
+    console.log(stores)
+    res.status(200).json({
+      'stores': stores
+    })
+  })
   module.exports = router;

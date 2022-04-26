@@ -36,13 +36,16 @@ app.get("/",async(req,res)=>{
 })
 
 app.get("/pushcategories",async(req,res)=>{
-    var a=await Store.find()
+    var stores=await Store.find()
+    var a=stores.filter((s)=>(!(s.category.some((f)=>f==='PROVISIONS'))))
     a.forEach(async(b) => {
-b.category.push({name:'PAAN'})
+b.category.push({name:'PROVISIONS'})
 await b.save()
     })
     res.send("API running")
 })
+
+
 app.get('/createproduct',async(req,res)=>{
   const product=Product({  name:'Gold Flakes',
     image:'https://ik.imagekit.io/dunzo/home/icons/home/dunzodaily/Paan_SKU_4x.png',   
