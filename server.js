@@ -20,7 +20,7 @@ app.use('/store/',store)
 app.use('/payment/',payment)
 mongoose.Promise = global.Promise
 mongoose.connect(
-  'mongodb://127.0.0.1:27017/dunzo',
+  ATLAS_URI,
   { useNewUrlParser: true, useUnifiedTopology: true },
   function (error) {
     if (error) {
@@ -41,7 +41,7 @@ app.get("/",async(req,res)=>{
 
 app.get("/pushcategories",async(req,res)=>{
     var stores=await Store.find()
-    var a=stores.filter((s)=>(!(s.category.some((f)=>f==='PROVISIONS'))))
+  var a=stores.filter((s)=>(!(s.category.some((f)=>f==='PROVISIONS'))))
     a.forEach(async(b) => {
 b.category.push({name:'PROVISIONS'})
 await b.save()
