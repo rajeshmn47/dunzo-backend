@@ -29,7 +29,19 @@ router.get("/getallstores",async function(req, res,next){
 
   router.get("/getproducts",async function(req, res,next){
     console.log(req.query)
-    const products=await Product.find({subcat:{$eq:req.query.category }})
+    allqueries=[]
+    var products=[]
+    if(req.query.search_text){
+      const queryString=req.query.search_text
+      const querystrings=queryString.split(" ")
+    querystrings.forEach(element=>{
+      allqueries.push({name:{$regex:String(element),$options:"i"}})
+    })
+     products=await Product.find({$or:allqueries})
+  }
+  else{
+     products=await Product.find({subcat:{$eq:req.query.category }})
+  }
     console.log(products)
     res.status(200).json({
       'products': products
