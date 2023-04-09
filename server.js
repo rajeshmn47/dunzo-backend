@@ -15,7 +15,9 @@ const ATLAS_URI ='mongodb+srv://rajeshmn47:uni1ver%40se@cluster0.bpxam.mongodb.n
 const cors=require('cors')
 const url = 'http://localhost:3000'
 const deployedurl='https://dunzoclonebyrajesh.netlify.app'
-app.use(cors({ origin:deployedurl, credentials: true }))
+app.use(cors({
+  origin: '*'
+}));
 app.use('/store/',store)
 app.use('/payment/',payment)
 mongoose.Promise = global.Promise
