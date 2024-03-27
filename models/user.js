@@ -2,25 +2,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const customerSchema = new Schema({
-    name:{
-        type:String,     
+    name: {
+        type: String,
     },
-    email:{
-        type:String,
+    email: {
+        type: String,
     },
-    phoneNumber:{
-        type:String,
-        required:true
+    phoneNumber: {
+        type: String,
+        required: true
     },
-    coordinates:{
-        type:[Number],
-        index:"2dsphere"
+    coordinates: {
+        type: [Number],
+        index: "2dsphere"
     },
-    active:{
-        type:Boolean,
-        default:false
+    active: {
+        type: Boolean,
+        default: false
     },
 })
 
 
-module.exports = mongoose.model('Customer',customerSchema)
+module.exports = mongoose.model('Customer', customerSchema)

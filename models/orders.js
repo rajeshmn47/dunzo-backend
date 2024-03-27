@@ -1,25 +1,25 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-storeInfo:{
-    store:{
-        type: mongoose.Schema.ObjectId,
-        ref: "Store",
-        required: true,
-      },
-    title:{
-        type: String,
-        required: true,
-      },
+  storeInfo: {
+    store: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Store",
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
     address: {
-        type: String,
-        required: true,
-      },
-    coordinates:{
-        type:[Number],
-        index:"2dsphere"
+      type: String,
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      index: "2dsphere"
     }
-},
+  },
   shippingInfo: {
     address: {
       type: String,
@@ -38,9 +38,9 @@ storeInfo:{
       type: Number,
       required: true,
     },
-    coordinates:{
-        type:[Number],
-        index:"2dsphere"
+    coordinates: {
+      type: [Number],
+      index: "2dsphere"
     }
   },
   orderItems: [

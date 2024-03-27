@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const Order= require('../models/orders');
+const Order = require('../models/orders');
 const { v4: uuidv4 } = require('uuid');
 const Razorpay = require('razorpay');
 const router = express.Router();
@@ -64,12 +64,12 @@ router.post('/capture/:paymentId/:amount', (req, res) => {
     }
 });
 
-router.patch('/createorder',async(req,res)=>{ 
+router.patch('/createorder', async (req, res) => {
     console.log(req.body)
-    try{
-    const o=new Order(req.body)
+    try {
+        const o = new Order(req.body)
         await o.save()
-    } catch(err){
+    } catch (err) {
         console.log(err)
         return res.status(400).send(err)
     }
