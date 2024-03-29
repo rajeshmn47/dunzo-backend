@@ -35,7 +35,7 @@ app.get("/", async (req, res) => {
     title: 'Chettas Store',
     img_url: 'https://ik.imagekit.io/dunzo/dunzo-catalog-prod/tr:w-250,h-250,cm-pad_resize_store_thumbnail/stores/fdc547de-1ca4-429a-a28f-4e69e80e786a-1605099865702-store_image.jpg',
     maincategory: 'paan', description: 'it is a good product', location: 'Lingarajapuram',
-    coordinates: [77.56, 13.0097]
+    coordinates: [13.0097, 77.56]
   })
   await a.save()
   console.log(a)
@@ -98,20 +98,7 @@ app.get('/createproduct', async (req, res) => {
   res.send("API running")
 })
 app.get('/findout', async (req, res) => {
-  const stores = await Store.find({
-    location: {
-      $near: {
-        $geometry: {
-          type: "Point",
-          coordinates: [70, 30],
-        },
-        maxDistance: 100000,
-        spherical: true,
-        distanceField: "dis"
-      },
-    },
-  })
-
+  const stores = await Store.find()
   res.status(200).json({
     'stores': stores
   })
