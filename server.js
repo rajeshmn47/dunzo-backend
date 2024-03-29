@@ -37,8 +37,8 @@ app.get("/", async (req, res) => {
     maincategory: 'paan', description: 'it is a good product', location: 'Lingarajapuram',
     coordinates: [13.0097, 77.56]
   })
-  await a.save()
-  console.log(a)
+  await a.save();
+  console.log(a);
   res.send("API running")
 })
 
@@ -99,6 +99,24 @@ app.get('/createproduct', async (req, res) => {
 })
 app.get('/findout', async (req, res) => {
   const stores = await Store.find()
+  res.status(200).json({
+    'stores': stores
+  })
+})
+
+app.get('/update-stores', async (req, res) => {
+  const stores = await Store.find();
+  //let storeNo = []
+  for (let i = 0; i < stores.length; i++) {
+    if (!(stores[i].coordinates)) {
+      console.log(stores[i]?.coordinates)
+      {/*let s = await Store.updateOne({ _id: stores[i]?._id },
+        { $set: { coordinates: [13.0097, 77.56] } },
+        { multi: true })
+      storeNo.push(s);
+      */}
+    }
+  }
   res.status(200).json({
     'stores': stores
   })

@@ -114,11 +114,33 @@ router.get("/search", async function (req, res, next) {
 
 router.get("/getstores/:q", async function (req, res, next) {
   const queryString = req.params.q
-  var stores = await Store.find()
-  stores.filter((s) => (s.category.some((f) => f === queryString)))
-  console.log(stores)
+  let storez;
+  if (req.query?.lat && req.query?.long) {
+    console.log('recieved lat query')
+    storez = await Store.aggregate().near({
+      near: {
+        type: "Point",
+        coordinates: [parseFloat(req.query.lat), parseFloat(req.query.long)],
+      },
+      maxDistance: 6500000000,
+      spherical: true,
+      distanceField: "dis"
+    })
+  } else {
+    storez = await Store.aggregate().near({
+      near: {
+        type: "Point",
+        coordinates: [12.97, 77.57],
+      },
+      maxDistance: 6500000000,
+      spherical: true,
+      distanceField: "dis"
+    })
+  }
+  storez.filter((s) => (s.category.some((f) => f === queryString)))
+  console.log(storez)
   res.status(200).json({
-    'stores': stores
+    'stores': storez
   })
 })
 module.exports = router;
